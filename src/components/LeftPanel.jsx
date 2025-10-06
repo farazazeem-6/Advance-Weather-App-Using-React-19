@@ -35,7 +35,36 @@ function LeftPanel() {
         </div>
       </div>
       <div className="days-forcast">
-        
+        <div className="day-weather-detail">
+          <div className="day-name">Monday</div>
+          <div className="day-temp">20°</div>
+          <div className="day-type">Rainy</div>
+        </div>
+        <div className="day-weather-detail">
+          <div className="day-name">Monday</div>
+          <div className="day-temp">20°</div>
+          <div className="day-type">Rainy</div>
+        </div>
+        <div className="day-weather-detail">
+          <div className="day-name">Monday</div>
+          <div className="day-temp">20°</div>
+          <div className="day-type">Rainy</div>
+        </div>
+        <div className="day-weather-detail">
+          <div className="day-name">Monday</div>
+          <div className="day-temp">20°</div>
+          <div className="day-type">Rainy</div>
+        </div>
+        <div className="day-weather-detail">
+          <div className="day-name">Monday</div>
+          <div className="day-temp">20°</div>
+          <div className="day-type">Rainy</div>
+        </div>
+        <div className="day-weather-detail">
+          <div className="day-name">Monday</div>
+          <div className="day-temp">20°</div>
+          <div className="day-type">Rainy</div>
+        </div>
       </div>
     </div>
   );
