@@ -103,6 +103,7 @@
   padding: 15px 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
+  width: 90px;
 }
 .day-name {
   font-size: 10px;
@@ -114,7 +115,7 @@
   color: #6a6a6a;
 }
 .day-type {
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 550;
   color: #6a6a6a;
 }
