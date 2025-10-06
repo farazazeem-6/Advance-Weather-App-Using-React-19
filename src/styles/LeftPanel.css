@@ -2,6 +2,7 @@
   padding: 20px 70px;
   display: flex;
   flex-direction: column;
+  width: 70%;
 }
 .city-name {
   font-weight: 500;
