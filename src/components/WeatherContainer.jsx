@@ -30,7 +30,7 @@ function WeatherContainer() {
     // console.log(responseData.data[0]);
 
     setHourForcast(responseDataHoursForcast.data.slice(0,6));
-    // console.log(responseDataHoursForcast.data.slice(0, 6));
+    console.log(responseDataHoursForcast.data.slice(0, 6));
 
     // console.log(responseDataDaysForcast.data.slice(0,6));
     setDaysForcast(responseDataDaysForcast.data.slice(0, 6))
@@ -51,7 +51,7 @@ function WeatherContainer() {
         onCityChange={handleCityChange}
         dayForcast={daysForcast}
       />
-      <RightPanel hoursForcast={hoursForcast} />
+      <RightPanel hoursForcast={hoursForcast} weather={weatherData}/>
     </div>
   );
 }

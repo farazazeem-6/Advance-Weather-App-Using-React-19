@@ -25,8 +25,6 @@ const handleKeyDown = (e) => {
   if (!dayForcast || Object.keys(dayForcast).length === 0) {
     return <div className="left-panel">Loading...</div>;
   }
-  console.log(dayForcast);
-
   function getShortDayName(dateString) {
     const cleanDate = dateString.split(":")[0];
     const date = new Date(cleanDate);
@@ -53,7 +51,7 @@ const handleKeyDown = (e) => {
       </div>
       <div className="left-panel-body">
         <div className="temp-section">
-          <p className="act-temp">{weather.app_temp}</p>
+          <p className="act-temp">{weather.app_temp}°</p>
           <p className="weather-type">{weather.weather.description}</p>
         </div>
         <div className="extra-detail-section">
