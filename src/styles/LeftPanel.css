@@ -1,9 +1,85 @@
-.left-panel{
-    padding: 20px 50px;
-    display: flex;
-    flex-direction: column;
+.left-panel {
+  padding: 20px 70px;
+  display: flex;
+  flex-direction: column;
 }
-.city-name{
-font-weight: 500;
-font-size: 1.5rem;
+.city-name {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.date {
+  font-weight: 500;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.search-bar input {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.search-bar input:focus {
+  outline: 1px solid #ccc;
+}
+.search-btn {
+  padding: 10px 15px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.left-panel-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  color: #6a6a6a;
+}
+.temp-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.act-temp {
+  font-size: 10rem;
+  font-weight: 600;
+}
+.weather-type {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.extra-detail-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+.wind-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.moisture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.wind {
+  font-weight: 500;
+}
+.moisture-percentage {
+  font-weight: 500;
 }
