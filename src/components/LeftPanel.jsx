@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/LeftPanel.css";
 import AirIcon from "@mui/icons-material/Air";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
@@ -13,11 +13,11 @@ const handleSearch = () => {
   }
 };
 
-const handleKeyDown = (e) => {
-  if (e.key === "Enter") {
-    handleSearch();
-  }
-};
+// const handleKeyDown = (e) => {
+//   if (e.key === "Enter") {
+//     handleSearch();
+//   }
+// };
 
   if (!weather || Object.keys(weather).length === 0) {
     return <div className="left-panel">Loading...</div>;
@@ -25,8 +25,6 @@ const handleKeyDown = (e) => {
   if (!dayForcast || Object.keys(dayForcast).length === 0) {
     return <div className="left-panel">Loading...</div>;
   }
-  console.log(dayForcast);
-
   function getShortDayName(dateString) {
     const cleanDate = dateString.split(":")[0];
     const date = new Date(cleanDate);
@@ -53,7 +51,7 @@ const handleKeyDown = (e) => {
       </div>
       <div className="left-panel-body">
         <div className="temp-section">
-          <p className="act-temp">{weather.app_temp}</p>
+          <p className="act-temp">{weather.app_temp}°</p>
           <p className="weather-type">{weather.weather.description}</p>
         </div>
         <div className="extra-detail-section">
