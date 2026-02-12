@@ -1,5 +1,4 @@
-import { Box } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import "../styles/WeatherContainer.css";
 import LeftPanel from "./LeftPanel";
 import RightPanel from "./RightPanel";
@@ -27,7 +26,7 @@ function WeatherContainer() {
     const responseDataHoursForcast = await currHoursForcast.json();
 
     setWeatherData(responseData.data[0]);
-    // console.log(responseData.data[0]);
+    console.log(responseData.data[0]);
 
     setHourForcast(responseDataHoursForcast.data.slice(0,6));
     console.log(responseDataHoursForcast.data.slice(0, 6));

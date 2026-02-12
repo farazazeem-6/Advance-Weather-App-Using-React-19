@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/LeftPanel.css";
 import AirIcon from "@mui/icons-material/Air";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
@@ -13,11 +13,11 @@ const handleSearch = () => {
   }
 };
 
-const handleKeyDown = (e) => {
-  if (e.key === "Enter") {
-    handleSearch();
-  }
-};
+// const handleKeyDown = (e) => {
+//   if (e.key === "Enter") {
+//     handleSearch();
+//   }
+// };
 
   if (!weather || Object.keys(weather).length === 0) {
     return <div className="left-panel">Loading...</div>;

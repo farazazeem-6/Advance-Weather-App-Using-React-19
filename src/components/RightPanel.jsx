@@ -10,14 +10,14 @@ function RightPanel({ hoursForcast, weather }) {
   if (!weather || Object.keys(weather).length === 0) {
     return <div className="right-panel">Loading...</div>;
   }
-  function extractDate(datetimeString) {
-    return datetimeString.split(" ")[0];
-  }
-  function getAmOrPmFromTimestamp(ts) {
-    const date = new Date(ts * 1000);
-    const hours = date.getHours();
-    return hours >= 12 ? "PM" : "AM";
-  }
+  // function extractDate(datetimeString) {
+  //   return datetimeString.split(" ")[0];
+  // }
+  // function getAmOrPmFromTimestamp(ts) {
+  //   const date = new Date(ts * 1000);
+  //   const hours = date.getHours();
+  //   return hours >= 12 ? "PM" : "AM";
+  // }
 
   function getHourFromTimestamp(ts) {
     const date = new Date(ts * 1000);
@@ -54,7 +54,7 @@ function RightPanel({ hoursForcast, weather }) {
       </div>
       <h6 style={{ fontSize: "16px" }}>Hourly Forcast</h6>
       <div className="hourly-forcast">
-        {hoursForcast.map((item, index) => (
+        {hoursForcast.map((item) => (
           <div className="day-weather-detail">
             <div className="day-name">{getHourFromTimestamp(item.ts)}:00</div>
             <div className="day-temp">{item.app_temp}°</div>
