@@ -13,12 +13,6 @@ const handleSearch = () => {
   }
 };
 
-// const handleKeyDown = (e) => {
-//   if (e.key === "Enter") {
-//     handleSearch();
-//   }
-// };
-
   if (!weather || Object.keys(weather).length === 0) {
     return <div className="left-panel">Loading...</div>;
   }
