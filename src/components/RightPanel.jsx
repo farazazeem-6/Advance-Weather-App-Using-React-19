@@ -10,14 +10,6 @@ function RightPanel({ hoursForcast, weather }) {
   if (!weather || Object.keys(weather).length === 0) {
     return <div className="right-panel">Loading...</div>;
   }
-  // function extractDate(datetimeString) {
-  //   return datetimeString.split(" ")[0];
-  // }
-  // function getAmOrPmFromTimestamp(ts) {
-  //   const date = new Date(ts * 1000);
-  //   const hours = date.getHours();
-  //   return hours >= 12 ? "PM" : "AM";
-  // }
 
   function getHourFromTimestamp(ts) {
     const date = new Date(ts * 1000);
