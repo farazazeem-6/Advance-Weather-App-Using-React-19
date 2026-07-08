@@ -38,7 +38,7 @@ const handleSearch = () => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             type="text"
-            placeholder="Enter City"
+            placeholder="Enter City Name"
           />
           <button onClick={handleSearch} className="search-btn">Search</button>
         </div>
