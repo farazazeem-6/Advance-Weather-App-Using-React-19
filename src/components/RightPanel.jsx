@@ -1,26 +1,23 @@
-import React from "react";
 import "../styles/RightPanel.css";
 import AirIcon from "@mui/icons-material/Air";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 
-function RightPanel({ hoursForcast, weather }) {
-  if (!hoursForcast || Object.keys(hoursForcast).length === 0) {
+function RightPanel({ hourlyForecast, weather, loading }) {
+  if (loading && !weather) {
     return <div className="right-panel">Loading...</div>;
   }
-  if (!weather || Object.keys(weather).length === 0) {
-    return <div className="right-panel">Loading...</div>;
+
+  if (!weather) {
+    return <div className="right-panel">No weather data available.</div>;
   }
 
   function getHourFromTimestamp(ts) {
     const date = new Date(ts * 1000);
-    return date.getHours();
+    return String(date.getHours()).padStart(2, "0");
   }
 
   return (
     <div className="right-panel">
-      {/* <p className="greet">Good Morning</p>
-      <p className="time">{getAmOrPmFromTimestamp(hoursForcast[0].ts)}</p> */}
-
       <div className="right-panel-body">
         <div className="temp-right-section">
           <p className="act-right-temp">{weather.app_temp}°</p>
@@ -44,15 +41,19 @@ function RightPanel({ hoursForcast, weather }) {
         <p className="discrypt-text">Feels like {weather.app_temp}°</p>
         <p className="right-weather-type">{weather.weather.description}</p>
       </div>
-      <h6 style={{ fontSize: "16px" }}>Hourly Forcast</h6>
-      <div className="hourly-forcast">
-        {hoursForcast.map((item) => (
-          <div className="day-weather-detail">
-            <div className="day-name">{getHourFromTimestamp(item.ts)}:00</div>
-            <div className="day-temp">{item.app_temp}°</div>
-            <div className="day-type">{item.weather.description}</div>
-          </div>
-        ))}
+      <h6 style={{ fontSize: "16px" }}>Hourly Forecast</h6>
+      <div className="hourly-forecast">
+        {hourlyForecast.length ? (
+          hourlyForecast.map((item) => (
+            <div className="day-weather-detail" key={item.ts}>
+              <div className="day-name">{getHourFromTimestamp(item.ts)}:00</div>
+              <div className="day-temp">{item.app_temp}°</div>
+              <div className="day-type">{item.weather.description}</div>
+            </div>
+          ))
+        ) : (
+          <div className="loading-state">No hourly forecast available.</div>
+        )}
       </div>
     </div>
   );
