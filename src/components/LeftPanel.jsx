@@ -3,75 +3,84 @@ import "../styles/LeftPanel.css";
 import AirIcon from "@mui/icons-material/Air";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 
-function LeftPanel({ weather, onCityChange, dayForcast }) {
+function getShortDayName(dateString) {
+  const cleanDate = dateString.split(":")[0];
+  const date = new Date(cleanDate);
+  return date.toLocaleDateString("en-US", { weekday: "short" });
+}
+
+function extractDate(datetimeString) {
+  return datetimeString.split(" ")[0];
+}
+
+function LeftPanel({ weather, onCityChange, dailyForecast, loading }) {
   const [inputValue, setInputValue] = useState("");
 
-const handleSearch = () => {
-  if (inputValue.trim()) {
-    onCityChange(inputValue);
-    setInputValue("");
-  }
-};
-
-  if (!weather || Object.keys(weather).length === 0) {
-    return <div className="left-panel">Loading...</div>;
-  }
-  if (!dayForcast || Object.keys(dayForcast).length === 0) {
-    return <div className="left-panel">Loading...</div>;
-  }
-  function getShortDayName(dateString) {
-    const cleanDate = dateString.split(":")[0];
-    const date = new Date(cleanDate);
-    return date.toLocaleDateString("en-US", { weekday: "short" });
-  }
-  function extractDate(datetimeString) {
-    return datetimeString.split(" ")[0];
-  }
+  const handleSearch = () => {
+    if (inputValue.trim()) {
+      onCityChange(inputValue);
+      setInputValue("");
+    }
+  };
 
   return (
     <div className="left-panel">
       <div className="header">
-        <p className="city-name">{weather.city_name}</p>
-        <p className="date">{extractDate(weather.ob_time)}</p>
+        <p className="city-name">{weather?.city_name || "Weather App"}</p>
+        <p className="date">{weather ? extractDate(weather.ob_time) : "Loading..."}</p>
         <div className="search-bar">
           <input
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             type="text"
-            placeholder="Enter City Name"
+            placeholder="Enter city name"
           />
           <button onClick={handleSearch} className="search-btn">Search</button>
         </div>
       </div>
-      <div className="left-panel-body">
-        <div className="temp-section">
-          <p className="act-temp">{weather.app_temp}°</p>
-          <p className="weather-type">{weather.weather.description}</p>
-        </div>
-        <div className="extra-detail-section">
-          <div className="wind-detail">
-            <span>
-              <AirIcon />
-            </span>
-            <p className="wind">{weather.wind_spd} mph</p>
+
+      {loading && !weather ? (
+        <div className="loading-state">Loading weather...</div>
+      ) : null}
+
+      {weather ? (
+        <>
+          <div className="left-panel-body">
+            <div className="temp-section">
+              <p className="act-temp">{weather.app_temp}°</p>
+              <p className="weather-type">{weather.weather.description}</p>
+            </div>
+            <div className="extra-detail-section">
+              <div className="wind-detail">
+                <span>
+                  <AirIcon />
+                </span>
+                <p className="wind">{weather.wind_spd} mph</p>
+              </div>
+              <div className="moisture">
+                <span>
+                  <WaterDropIcon />
+                </span>
+                <p className="moisture-percentage">{weather.rh} %</p>
+              </div>
+            </div>
           </div>
-          <div className="moisture">
-            <span>
-              <WaterDropIcon />
-            </span>
-            <p className="moisture-percentage">{weather.rh} %</p>
+
+          <div className="days-forecast">
+            {dailyForecast.length ? (
+              dailyForecast.map((item) => (
+                <div className="day-weather-detail" key={item.datetime}>
+                  <div className="day-name">{getShortDayName(item.datetime)}</div>
+                  <div className="day-temp">{item.app_min_temp}°</div>
+                  <div className="day-type">{item.weather.description}</div>
+                </div>
+              ))
+            ) : (
+              <div className="loading-state">No forecast data available.</div>
+            )}
           </div>
-        </div>
-      </div>
-      <div className="days-forcast">
-        {dayForcast.map((item, index) => (
-          <div className="day-weather-detail" key={index}>
-            <div className="day-name">{getShortDayName(item.datetime)}</div>
-            <div className="day-temp">{item.app_min_temp}°</div>
-            <div className="day-type">{item.weather.description}</div>
-          </div>
-        ))}
-      </div>
+        </>
+      ) : null}
     </div>
   );
 }
